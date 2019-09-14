@@ -45,6 +45,9 @@ brew install openssh
 brew install screen
 brew install php
 brew install gmp
+brew install sqlite
+brew install readline
+brew install openssl
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -53,39 +56,16 @@ brew install sfnt2woff-zopfli
 brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install aircrack-ng
-brew install bfg
-brew install binutils
-brew install binwalk
-brew install cifer
-brew install dex2jar
-brew install dns2tcp
-brew install fcrackzip
-brew install foremost
-brew install hashpump
-brew install hydra
-brew install john
-brew install knock
-brew install netpbm
 brew install nmap
-brew install pngcheck
-brew install socat
-brew install sqlmap
-brew install tcpflow
-brew install tcpreplay
-brew install tcptrace
-brew install ucspi-tcp # `tcpserver` etc.
-brew install xpdf
-brew install xz
 
 # Install other useful binaries.
-brew install ack
+brew install the_silver_searcher
 #brew install exiv2
 brew install git
 brew install git-lfs
 brew install gs
-brew install imagemagick --with-webp
-brew install lua
+# brew install imagemagick --with-webp
+# brew install lua
 brew install lynx
 brew install p7zip
 brew install pigz
@@ -97,5 +77,68 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+brew install scala
+brew install maven
+brew install gradle
+brew install python
+brew install pipenv
+
+# brew cask
+brew tap caskroom/cask
+
+brew cask install keepassxc
+
+brew cask install sublime-text
+
+brew cask install private-internet-access
+
+brew cask install java
+
+brew cask install homebrew/cask-versions/java8
+
+brew cask install android-sdk
+sdkmanager --update
+brew cask install android-studio
+
+brew cask install pycharm
+
+brew cask install intellij-idea-ce
+
+brew cask install virtualbox
+
+brew cask install firefox
+
+brew cask install google-chrome
+
+brew cask install skim
+
+brew cask install vlc
+
+brew cask install reaper
+
+brew cask install spotify
+
+brew cask install signal
+
+brew cask install discord
+
+brew cask install slack
+
+brew cask install flux
+
+brew cask install steveschow-gfxcardstatus
+
+brew cask install eve
+
+brew cask install google-backup-and-sync
+
+brew cask install istat-menus
+
+brew cask install the-unarchiver
+
 # Remove outdated versions from the cellar.
 brew cleanup
+
+
+# Install Google Fonts
+git clone https://github.com/google/fonts.git ~/Library/Fonts/google-fonts

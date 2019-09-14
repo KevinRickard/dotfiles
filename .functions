@@ -84,15 +84,6 @@ function server() {
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
 
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function phpserver() {
-	local port="${1:-4000}";
-	local ip=$(ipconfig getifaddr en1);
-	sleep 1 && open "http://${ip}:${port}/" &
-	php -S "${ip}:${port}";
-}
-
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
@@ -103,7 +94,7 @@ function gz() {
 }
 
 # Run `dig` and display the most useful info
-function digga() {
+function diglet() {
 	dig +nocmd "$1" any +multiline +noall +answer;
 }
 
@@ -141,17 +132,6 @@ function getcertnames() {
 	fi;
 }
 
-# Normalize `open` across Linux, macOS, and Windows.
-# This is needed to make the `o` function (see below) cross-platform.
-if [ ! $(uname -s) = 'Darwin' ]; then
-	if grep -q Microsoft /proc/version; then
-		# Ubuntu on Windows using the Linux subsystem
-		alias open='explorer.exe';
-	else
-		alias open='xdg-open';
-	fi
-fi
-
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
@@ -168,4 +148,32 @@ function o() {
 # small enough for one screen.
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+function copy() {
+    test -z $1 && echo "No file input!" && return
+    test ! -e $1 && echo "File not exist!" && return
+    export orig_path="$PWD/$1"
+    export orig_name="$1"
+}
+
+function paste() {
+    test -z $orig_path && echo "No copied file!" && return
+    if [ "$#" -lt 1 ];then
+        dist_name="$PWD/$orig_name"
+        if [ -d $orig_path ];then
+            cp -r $orig_path $dist_name
+        else
+            cp $orig_path $dist_name
+        fi
+        echo "$orig_name pasted."
+    else
+        dist_name="$PWD/$1"
+        if [ -d $orig_path ];then
+            cp -r $orig_path $dist_name
+        else
+            cp $orig_path $dist_name
+        fi
+        echo "\"$1\" pasted."
+    fi
 }

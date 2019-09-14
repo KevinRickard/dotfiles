@@ -16,7 +16,10 @@
 	p = git pull --recurse-submodules
 
 	# Clone a repository including all submodules
-	c = clone --recursive
+	cl = clone --recursive
+
+	# Commit
+	c = commit
 
 	# Commit all changes
 	ca = !git add -A && git commit -av
