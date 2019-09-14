@@ -25,6 +25,12 @@ git clone https://github.com/kevinrickard/dotfiles.git && cd dotfiles && source 
 ./brew.sh
 ```
 
+Then get https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj480dw_us_eu_as
+
+and https://totalspaces.binaryage.com/
+
+and install microsoft office apps from MasonLive
+
 To update, `cd` into your local `dotfiles` repository and then:
 
 ```bash

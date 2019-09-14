@@ -86,6 +86,8 @@ brew install pipenv
 # brew cask
 brew tap caskroom/cask
 
+brew cask install zoomus
+
 brew cask install keepassxc
 
 brew cask install sublime-text
