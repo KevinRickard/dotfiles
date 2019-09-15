@@ -16,6 +16,43 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
+defaults write "Apple Global Domain" NSCloseAlwaysConfirmsChanges -int 1
+defaults write "Apple Global Domain" NSQuitAlwaysKeepsWindows -int 1
+defaults write "Apple Global Domain" AppleSpacesSwitchOnActivate -int 0
+defaults write "Apple Global Domain" AppleSpacesSwitchOnActivate -int 0
+
+# Show battery percentage
+# defaults write "com.apple.menuextra.battery" ShowPercent -bool YES
+
+# Set first day of week to Monday
+defaults write "Apple Global Domain" AppleFirstWeekday -dict gregorian 2
+
+# clock stuff
+defaults write "com.apple.menuextra.clock" DateFormat -string "EEE MMM d  h:mm a"
+defaults write "com.apple.menuextra.clock" FlashDateSeparators -int 0
+defaults write "com.apple.menuextra.clock" IsAnalog -int 0
+
+# Show bluetooth and emojis button in top bar
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.textinput" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.bluetooth" -int 1
+defaults write "com.apple.systemuiserver" menuExtras -array "/System/Library/CoreServices/Menu Extras/Clock.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Displays.menu" "/System/Library/CoreServices/Menu Extras/TextInput.menu"
+
+# get this info with: defaults read | ag -C 10 "NSStatusItem Preferred Position"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.clock" -float "161"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.battery" -float "263.1523"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.airport" -float "384"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.bluetooth" -float "474"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.textinput" -float "769"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.battery" -float "340.5"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.cpu" -float "646"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.memory" -float "713"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.sensors" -float "561.5"
+defaults write "com.codykrieger.gfxCardStatus" "NSStatusItem Preferred Position Item-0" -float "588.5"
+defaults write "com.google.GoogleDrive" "NSStatusItem Preferred Position Item-0" -float "444"
+defaults write "com.privateinternetaccess.vpn" "NSStatusItem Preferred Position Item-0" -float "407.9141"
+defaults write "com.togo.hotkeyEVE" "NSStatusItem Preferred Position Item-0" -float "743"
+defaults write "org.herf.Flux" "NSStatusItem Preferred Position Item-0" -float "532.5"
+
 # Set computer name (as done via System Preferences → Sharing)
 #sudo scutil --set ComputerName "0x6D746873"
 #sudo scutil --set HostName "0x6D746873"
@@ -35,7 +72,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the over-the-top focus ring animation
@@ -71,9 +108,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
-
-# Disable Resume system-wide
-# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 # defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
@@ -115,19 +149,39 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Trackpad: map bottom right corner to right-click
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
-
-# Disable “natural” (Lion-style) scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+defaults write "com.apple.AppleMultitouchTrackpad" Clicking -int 1
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" Clicking -int 1
+defaults write "Apple Global Domain" com.apple.swipescrolldirection -bool false
+defaults write "Apple Global Domain" ContextMenuGesture -bool true
+defaults write "Apple Global Domain" AppleEnableSwipeNavigateWithScrolls -bool true
+defaults write "Apple Global Domain" CGDisableCursorLocationMagnification -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadFiveFingerPinchGesture -int 0
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadFiveFingerPinchGesture -int 0
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadFourFingerPinchGesture -int 0
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadFourFingerPinchGesture -int 0
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadPinch -int 1
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadPinch -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadRightClick -int 1
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadRightClick -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadRotate -int 1
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadRotate -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadThreeFingerTapGesture -int 2
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadThreeFingerTapGesture -int 2
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadTwoFingerDoubleTapGesture -int 0
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadTwoFingerDoubleTapGesture -int 0
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
+defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" TrackpadTwoFingerFromRightEdgeSwipeGesture -int 0
+defaults write "com.apple.dock" showAppExposeGestureEnabled -int 0
+defaults write "com.apple.dock" showDesktopGestureEnabled -int 0
+defaults write "com.apple.dock" showLaunchpadGestureEnabled -int 0
+defaults write "com.apple.dock" showMissionControlGestureEnabled -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadThreeFingerDrag -int 1
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write "com.apple.AppleMultitouchTrackpad" TrackpadThreeFingerVertSwipeGesture -int 0
 
 # Increase sound quality for Bluetooth audio devices
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -145,7 +199,7 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
+# Set a blazingly moderate keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
@@ -234,6 +288,10 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+
+defaults write "com.apple.finder" ShowRecentTags -int 0
+defaults write "com.apple.finder" SidebarTagsSctionDisclosedState -int 1
+defaults write "com.apple.finder" TagsCloudSerialNumber -int 10
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -761,10 +819,6 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################
 
-# Disable the all too sensitive backswipe on trackpads
-# defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-# defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
-
 # Disable the all too sensitive backswipe on Magic Mouse
 # defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
 # defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
@@ -852,7 +906,6 @@ for app in "Activity Monitor" \
 	"Photos" \
 	"Safari" \
 	"SystemUIServer" \
-	"Terminal" \
 	"Transmission" \
 	"iCal"; do
 	killall "${app}" &> /dev/null

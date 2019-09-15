@@ -11,7 +11,6 @@
 You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
 
 
-
 ```bash
 # install brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -22,8 +21,45 @@ git clone https://github.com/kevinrickard/dotfiles.git && cd dotfiles && source 
 
 ./.macos
 
+# Java stuff. Must come first for other software to be installed correctly
+brew install jenv
+brew cask install homebrew/cask-versions/adoptopenjdk8
+brew cask install java
+ls -la /Library/Java/JavaVirtualMachines
+```
+
+Then add each path to jenv one-at-a-time.
+
+We need to add "/Contents/Home" to the version folder. WARNING: Use the actual paths on your machine... these are just EXAMPLE's
+
+```bash
+# Do:
+# jenv add /Library/Java/JavaVirtualMachines/1.6.0___EXAMPLE___/Contents/Home
+# jenv add /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk___EXAMPLE___/Contents/Home
+
+# to confirm
+jenv versions
+```
+
+Set java version to use (globably)
+
+Where XX matches one of the items in the versions list above.
+
+```bash
+# Do:
+# jenv global XX
+
+# to confirm
+java -version
+```
+
+##### Install other software from brew
+
+```bash
 ./brew.sh
 ```
+
+##### Get other software:
 
 Then get https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcj480dw_us_eu_as
 

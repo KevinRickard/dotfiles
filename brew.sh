@@ -21,7 +21,7 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 # Install a modern version of Bash.
 brew install bash
 brew install bash-completion2
@@ -33,20 +33,17 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
 brew install grep
 brew install openssh
 brew install screen
 brew install php
-brew install gmp
-brew install sqlite
-brew install readline
 brew install openssl
 
 # Install font tools.
@@ -60,12 +57,8 @@ brew install nmap
 
 # Install other useful binaries.
 brew install the_silver_searcher
-#brew install exiv2
-brew install git
 brew install git-lfs
 brew install gs
-# brew install imagemagick --with-webp
-# brew install lua
 brew install lynx
 brew install p7zip
 brew install pigz
@@ -76,12 +69,6 @@ brew install ssh-copy-id
 brew install tree
 brew install vbindiff
 brew install zopfli
-
-brew install scala
-brew install maven
-brew install gradle
-brew install python
-brew install pipenv
 
 # brew cask
 brew tap caskroom/cask
@@ -94,9 +81,9 @@ brew cask install sublime-text
 
 brew cask install private-internet-access
 
-brew cask install java
+brew cask install homebrew/cask-versions/adoptopenjdk8
 
-brew cask install homebrew/cask-versions/java8
+brew cask install java
 
 brew cask install android-sdk
 sdkmanager --update
@@ -138,9 +125,13 @@ brew cask install istat-menus
 
 brew cask install the-unarchiver
 
+brew install scala
+brew install maven
+brew install gradle
+brew install pipenv
+
 # Remove outdated versions from the cellar.
 brew cleanup
-
 
 # Install Google Fonts
 git clone https://github.com/google/fonts.git ~/Library/Fonts/google-fonts
