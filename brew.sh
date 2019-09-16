@@ -81,10 +81,6 @@ brew cask install sublime-text
 
 brew cask install private-internet-access
 
-brew cask install homebrew/cask-versions/adoptopenjdk8
-
-brew cask install java
-
 brew cask install android-sdk
 sdkmanager --update
 brew cask install android-studio

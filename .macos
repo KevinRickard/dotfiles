@@ -16,6 +16,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX                                                               #
 ###############################################################################
 
+networksetup -setdnsservers Wi-Fi 1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+
 defaults write "Apple Global Domain" NSCloseAlwaysConfirmsChanges -int 1
 defaults write "Apple Global Domain" NSQuitAlwaysKeepsWindows -int 1
 defaults write "Apple Global Domain" AppleSpacesSwitchOnActivate -int 0
