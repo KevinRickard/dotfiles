@@ -85,7 +85,7 @@ brew cask install android-sdk
 sdkmanager --update
 brew cask install android-studio
 
-brew cask install pycharm
+brew cask install pycharm-ce
 
 brew cask install intellij-idea-ce
 
