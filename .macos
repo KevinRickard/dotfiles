@@ -35,25 +35,33 @@ defaults write "com.apple.menuextra.clock" FlashDateSeparators -int 0
 defaults write "com.apple.menuextra.clock" IsAnalog -int 0
 
 # Show bluetooth and emojis button in top bar
-defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.textinput" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.airplay" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.airport" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.battery" -int 1
 defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.bluetooth" -int 1
-defaults write "com.apple.systemuiserver" menuExtras -array "/System/Library/CoreServices/Menu Extras/Clock.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Displays.menu" "/System/Library/CoreServices/Menu Extras/TextInput.menu"
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.clock" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.textinput" -int 1
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.volume" -int 1
 
-# get this info with: defaults read | ag -C 10 "NSStatusItem Preferred Position"
-defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.clock" -float "161"
-defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.battery" -float "263.1523"
-defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.airport" -float "384"
-defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.bluetooth" -float "474"
-defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.textinput" -float "769"
-defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.battery" -float "340.5"
-defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.cpu" -float "646"
-defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.memory" -float "713"
-defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.sensors" -float "561.5"
-defaults write "com.codykrieger.gfxCardStatus" "NSStatusItem Preferred Position Item-0" -float "588.5"
-defaults write "com.google.GoogleDrive" "NSStatusItem Preferred Position Item-0" -float "444"
-defaults write "com.privateinternetaccess.vpn" "NSStatusItem Preferred Position Item-0" -float "407.9141"
-defaults write "com.togo.hotkeyEVE" "NSStatusItem Preferred Position Item-0" -float "743"
-defaults write "org.herf.Flux" "NSStatusItem Preferred Position Item-0" -float "532.5"
+defaults write "com.apple.systemuiserver" menuExtras -array "/System/Library/CoreServices/Menu Extras/Clock.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Displays.menu" "/System/Library/CoreServices/Menu Extras/Volume.menu" "/System/Library/CoreServices/Menu Extras/TextInput.menu"
+
+# get this info with: defaults read | ag -B 3 "NSStatusItem Preferred Position"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.airplay" -float "508.8555"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.airport" -float "388"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.battery" -float "311"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.bluetooth" -float "478"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.clock" -float "163.5"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.textinput" -float "810"
+defaults write "com.apple.systemuiserver" "NSStatusItem Preferred Position com.apple.menuextra.volume" -float "260"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.battery" -float "355.5"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.cpu" -float "687"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.memory" -float "754"
+defaults write "com.bjango.istatmenus.status" "NSStatusItem Preferred Position com.bjango.istatmenus.sensors" -float "599.5"
+defaults write "com.codykrieger.gfxCardStatus" "NSStatusItem Preferred Position Item-0" -float "629.5"
+defaults write "com.google.GoogleDrive" "NSStatusItem Preferred Position Item-0" -float "448"
+defaults write "com.privateinternetaccess.vpn" "NSStatusItem Preferred Position Item-0" -float "418"
+defaults write "com.togo.hotkeyEVE" "NSStatusItem Preferred Position Item-0" -float "784"
+defaults write "org.herf.Flux" "NSStatusItem Preferred Position Item-0" -float "567.5"
 
 # Set computer name (as done via System Preferences → Sharing)
 #sudo scutil --set ComputerName "0x6D746873"
