@@ -81,8 +81,8 @@ brew cask install sublime-text
 
 brew cask install private-internet-access
 
-brew cask install android-sdk
-sdkmanager --update
+brew cask install android-platform-tools
+
 brew cask install android-studio
 
 brew cask install pycharm-ce

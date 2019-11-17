@@ -865,6 +865,13 @@ cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ 
 
 
 ###############################################################################
+# Spotify.app                                                                 #
+###############################################################################
+
+# Don't start on startup
+defaults write "com.spotify.client" AutoStartSettingIsHidden -int 0
+
+###############################################################################
 # Transmission.app                                                            #
 ###############################################################################
 
