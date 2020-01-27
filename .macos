@@ -907,6 +907,12 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 defaults write org.m0k.transmission RandomPort -bool true
 
 ###############################################################################
+# Skim.app                                                                    #
+###############################################################################
+
+defaults write net.sourceforge.skim-app.skim SKDisableTableToolTips -boolean true
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
