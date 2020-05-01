@@ -131,3 +131,6 @@ brew cleanup
 
 # Install Google Fonts
 git clone https://github.com/google/fonts.git ~/Library/Fonts/google-fonts
+
+# Install haskell (GHC)
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
